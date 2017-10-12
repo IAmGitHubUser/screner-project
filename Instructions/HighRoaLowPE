@@ -1,0 +1,4 @@
+Run RoaGreatenThan25List - it will give list of tickers
+Put it in highRoaLowPEScreenResultTickers array in Screener
+Run Screener - it will add values to text file
+Run HighRoaLowPeScreener - it will spit out result: ticker symbols in the order of buy
