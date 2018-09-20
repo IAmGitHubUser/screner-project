@@ -13,43 +13,44 @@ import model.CharastericsName;
 
 public class Screener {
     public static void main(String[] args) throws IOException {
-        
-        PrintFidelityHighRoaLowPe printPrintFidelity = new PrintFidelityHighRoaLowPe();
 
-        // Array with data type = CharastericsName
-        CharastericsName[] enumValues = {CharastericsName.PRICE};
+        String[] finvizValuesTickers = {"IBA", "JHG", "TECK", "WDC"};
+        String[] highRoaLowPeTickers = {"BPT", "NPO", "NTRI", "ACLS", "ESIO", "PETS", "CORT", "EXEL"};
+        String[] fidelityBetterThanAverageTickers = {"FONR", "SHPG", "LPX", "IPGP", "STMP", "TECK", "MKSI"};
+        String[] fidelityGrowthTickers = {"CORT", "MU", "NVDA", "SEDG", "TAL", "WB", "FB", "SGH"};
 
-        String[] finvizValuesTickers = {"IBA", "JHG", "TECK"};
-        String[] highRoaLowPeTickers = {"BPT", "NPO", "NTRI", "ACLS", "ESIO", "PETS", "CORT"};
-        String[] fidelityBetterThanAverageTickers = {"FONR", "SHPG", "LPX", "IPGP", "COHR", "STMP", "TECK", "LOPE", "MKSI", "TSM"};
-        String[] fidelityGrowthTickers = {"CORT", "MU", "TGS", "NVDA", "SEDG", "TAL", "JP"};
-
-        
         /**
          * Change following to run screeners
          * 
          */
         System.out.println("highRoaLowPeTickers");
         populateSpreadSheet(highRoaLowPeTickers, highRoaLowPeValuesArray(), excludedTickers(), "highRoaLowPeTickers");
+        printNumberOfHoldings(highRoaLowPeTickers);
         AreHighRoaLowCompaniesStillInScreen.getResult();
-        
+
         System.out.println();
         System.out.println("fidelityBetterThanIndustryAverageValuesArray");
         populateSpreadSheet(fidelityBetterThanAverageTickers, fidelityBetterThanIndustryAverageValuesArray(), excludedTickers(),
                             "fidelityBetterThanIndustryAverageValuesArray");
-        FidelityBetterThanIndustryAverageScreener2 fidelityBetterThanIndustryAverageScreener2 = new FidelityBetterThanIndustryAverageScreener2();
-        fidelityBetterThanIndustryAverageScreener2.getScreenResult();
+        printNumberOfHoldings(fidelityBetterThanAverageTickers);
+        FidelityBetterThanIndustryAverageScreener2.getScreenResult();
 
         System.out.println();
         System.out.println("finvizValuesTickers");
         populateSpreadSheetFromFinviz(finvizValuesTickers, finvizValuesArray(), excludedTickers());
+        printNumberOfHoldings(finvizValuesTickers);
         AreFinvizalueCompaniesStillInScreen.getResult();
-        
+
         System.out.println();
         System.out.println("fidelityGrowthTickers");
         populateSpreadSheet(fidelityGrowthTickers, growthValuesArray(), excludedTickers(), "fidelityGrowthTickers");
+        printNumberOfHoldings(fidelityGrowthTickers);
         AreGrowthCompaniesStillInScreen.getResult();
-        
+
+    }
+
+    private static void printNumberOfHoldings(String[] highRoaLowPeTickers) {
+        System.out.println("# of holdings: " + highRoaLowPeTickers.length);
     }
 
     public static void populateSpreadSheet(String[] tickers, CharastericsName[] values, String[] excludeThese, String spreadSheetName) {
@@ -125,9 +126,9 @@ public class Screener {
         }
 
         for (String ticker : tickers) {
-            
+
             MyHashMap printFinviz2 = new MyHashMap(ticker);
-            
+
             System.out.print(ticker + " " + formatDateTime + " ");
 
             try {
@@ -136,7 +137,6 @@ public class Screener {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
 
             for (String value : values) {
                 System.out.print(printFinviz2.getValue(value) + " ");
@@ -159,7 +159,7 @@ public class Screener {
         }
 
     }
-    
+
     public static void populateSpreadSheetFromFinviz(String[] tickers, String[] values, String[] excludeThese) {
         LocalDateTime currentLocalTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
@@ -180,9 +180,9 @@ public class Screener {
         }
 
         for (String ticker : tickers) {
-            
+
             MyFinvizHashMap printFinviz2 = new MyFinvizHashMap(ticker);
-            
+
             System.out.print(ticker + " " + formatDateTime + " ");
 
             try {
@@ -191,7 +191,6 @@ public class Screener {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
 
             for (String value : values) {
                 System.out.print(printFinviz2.getValue(value) + " ");
@@ -232,11 +231,11 @@ public class Screener {
                                                             "debtToEquityQtrPercentileReverse", "debtToEquityTtmPercentileReverse", "currentRatioPercentile"};
         return fidelityBetterThanIndustryAverageValues;
     }
-    
+
     public static String[] betterThanIndustryAverageScottradeValuesArray() {
-        String[] betterThanIndustryAverageValues = {"returnOnEquityPercentile", "returnOnEquity", "profitMarginQtrPercentile", "netProfitMargin", "pePercentileReverse",
-                                                    "pe", "debtToCapitalPercentileReverse", "debtToCapital", "priceToSalesPercentileReverse", "priceToSales",
-                                                    "priceToCashFlowPercentileReverse", "priceToCashFlow"};
+        String[] betterThanIndustryAverageValues = {"returnOnEquityPercentile", "returnOnEquity", "profitMarginQtrPercentile", "netProfitMargin",
+                                                    "pePercentileReverse", "pe", "debtToCapitalPercentileReverse", "debtToCapital",
+                                                    "priceToSalesPercentileReverse", "priceToSales", "priceToCashFlowPercentileReverse", "priceToCashFlow"};
         return betterThanIndustryAverageValues;
     }
 
@@ -249,13 +248,14 @@ public class Screener {
 
     public static String[] finvizValuesArray() {
         String[] finvizValues = {"price", "marketCap", "pb", "epsGrowthLastFiveYears", "dividendYield", "netProfitMargin", "pe", "returnOnAsset",
-                                 "longTermDebtToEquity", "salesGrowthLastFiveYears", "returnOnEquity", "debtToEquity", "epsGrowthThisYear", "espGrowthQtrOverQtr",
-                                 "returnOnInvestment", "grossMargin", "salesGrowthQtrOverQtr", "currentRatio"};
+                                 "longTermDebtToEquity", "salesGrowthLastFiveYears", "returnOnEquity", "debtToEquity", "epsGrowthThisYear",
+                                 "espGrowthQtrOverQtr", "returnOnInvestment", "grossMargin", "salesGrowthQtrOverQtr", "currentRatio"};
         return finvizValues;
     }
 
     public static String[] growthValuesArray() {
-        String[] growthValues = {"price", "espGrowthQtrOverQtr", "epsGrowthTtm", "returnOnEquity", "revenueGrowthLastQrtrvsSameQrtrPriorYear", "revenueGrowthTtm"};
+        String[] growthValues = {"price", "espGrowthQtrOverQtr", "epsGrowthTtm", "returnOnEquity", "revenueGrowthLastQrtrvsSameQrtrPriorYear",
+                                 "revenueGrowthTtm"};
         return growthValues;
     }
 
@@ -263,14 +263,13 @@ public class Screener {
         String[] highRoaLowPeValues = {"pePercentileReverse", "pe", "returnOnAssetsPercentile", "returnOnAssetFromfidelity", "price"};
         return highRoaLowPeValues;
     }
-    
-   
 
     public static String[] excludedTickers() {
         // Excluded on Oct 5, 2017.
-        String[] excludeThese = {"CACQ", "CET", "CHKR", "EMF", "MVO", "OXLC", "SDT", "MOG-A", "QVCA", "AKO-B", "ST", "AVGO", "HF", "BUFF", "OA", "BF-B", "JW-A", "RSPP", "NYLD-A"};
+        String[] excludeThese = {"CACQ", "CET", "CHKR", "EMF", "MVO", "OXLC", "SDT", "MOG-A", "QVCA", "AKO-B", "ST", "AVGO", "HF", "BUFF", "OA", "BF-B", "JW-A",
+                                 "RSPP", "NYLD-A"};
         return excludeThese;
 
     }
-    
+
 }
