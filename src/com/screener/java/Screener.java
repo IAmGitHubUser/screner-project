@@ -16,8 +16,9 @@ public class Screener {
 
         String[] finvizValuesTickers = {"IBA", "JHG", "TECK", "WDC"};
         String[] highRoaLowPeTickers = {"BPT", "NPO", "NTRI", "ACLS", "ESIO", "PETS", "CORT", "EXEL"};
-        String[] fidelityBetterThanAverageTickers = {"FONR", "SHPG", "LPX", "IPGP", "STMP", "TECK", "MKSI"};
-        String[] fidelityGrowthTickers = {"CORT", "MU", "NVDA", "SEDG", "TAL", "WB", "FB", "SGH"};
+        String[] fidelityBetterThanAverageTickers = {"FONR", "LPX", "IPGP", "STMP", "TECK", "MKSI"};
+//        String[] fidelityGrowthTickers = {"CORT", "MU", "NVDA", "SEDG", "TAL", "WB", "FB", "SGH"};
+        String[] fidelityGrowthTickers = {"FB"};
 
         /**
          * Change following to run screeners
