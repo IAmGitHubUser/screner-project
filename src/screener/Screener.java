@@ -19,7 +19,7 @@ public class Screener {
         String[] growthTickers = {"CORT", "MU", "NVDA", "SEDG", "TAL", "WB", "FB", "SGH"};
 
         /**
-         * Change following to run screeners
+         * Change following to run various screens.
          * 
          */
         System.out.println();
