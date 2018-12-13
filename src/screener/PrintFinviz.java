@@ -53,8 +53,6 @@ public class PrintFinviz {
         Elements bChildrerOfTd = doc.select("td > b");
 //        System.out.println(bChildrerOfTd);
 
-        PrintFidelityHighRoaLowPe print = new PrintFidelityHighRoaLowPe();
-
         System.out.print(tickerSymbol + " ");
         // print.printFinvizValue(bChildrerOfTd);
         getPeg(bChildrerOfTd);
@@ -74,8 +72,6 @@ public class PrintFinviz {
 
         // To print all the values
         // System.out.println(bChildrerOfTd);
-
-        PrintFidelityHighRoaLowPe print = new PrintFidelityHighRoaLowPe();
 
         System.out.print(tickerSymbol + " ");
         // print.printFinvizValue(bChildrerOfTd);

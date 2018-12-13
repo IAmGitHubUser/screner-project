@@ -14,8 +14,6 @@ public class MyHashMap {
 
     Finviz finviz = new Finviz();
 
-    Fidelity fidelity = new Fidelity();
-
     private final Map<String, String> map;
 
     private Document doc = null;
@@ -63,7 +61,6 @@ public class MyHashMap {
 
     private void buildMap(Elements elements, Elements financialHighlightsElements, Elements zachFinancialOveriewElements, Elements yahooQtyRevYoyElement, Elements industryElement) {
 
-        map.put("peDifferenceFromIndustryInPercent", Reuters.getPercentileElement(financialHighlightsElements, 0, true));
 //        map.put("priceToSalePercentReverse", Reuters.getPercentileElement(financialHighlightsElements, 12, true));
 //        map.put("priceToBookPercentReverse", Reuters.getPercentileElement(financialHighlightsElements, 15, true));
 //        map.put("priceToCashFLowPercentReverse", Reuters.getPercentileElement(financialHighlightsElements, 21, true));
@@ -82,7 +79,6 @@ public class MyHashMap {
 //        map.put("operatingMarginPercent", Reuters.getPercentileElement(financialHighlightsElements, 87, false));
 //        map.put("preTaxMarginPercent", Reuters.getPercentileElement(financialHighlightsElements, 96, false));
 //        map.put("netMarginPercent", Reuters.getPercentileElement(financialHighlightsElements, 99, false));
-        map.put("returnOnAssetsDifferenceFromIndustryInPercent", Reuters.getPercentileElement(financialHighlightsElements, 126, false));
 //        map.put("returnOnInvestmentPercent", Reuters.getPercentileElement(financialHighlightsElements, 132, false));
 //        map.put("returnOnEquityPercent", Reuters.getPercentileElement(financialHighlightsElements, 138, false));
 //        

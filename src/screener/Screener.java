@@ -14,9 +14,11 @@ import model.CharastericsName;
 public class Screener {
     public static void main(String[] args) throws IOException {
 
-        String[] finvizValuesTickers = {"JHG", "TECK", "AVX"};
-        String[] highRoaLowPeTickers = {"BPT", "ESIO", "CORT", "EXEL", "MSB", "GPP", "GBL", "FTSI", "CRT"};
-        String[] growthTickers = {"CORT", "MU", "NVDA", "SEDG", "TAL", "WB", "FB", "SGH"};
+        String[] finvizValuesTickers = {"JHG", "TECK", "AVX", "H", "TX", "WLK"};
+//        String[] highRoaLowPeTickers = {"BPT", "ESIO", "CORT", "EXEL", "MSB", "GPP", "GBL", "FTSI", "CRT", "SBR", "INVA", "MTR"};
+         String[] highRoaLowPeTickers =
+             {"SBR","AMGP","TPL","GBL","SIEB","CRT","MTR","GPP","WINA","INVA"};
+        String[] growthTickers = {"CORT", "MU", "SEDG", "WB", "SGH"};
 
         /**
          * Change following to run various screens.
@@ -39,7 +41,7 @@ public class Screener {
         System.out.println("highRoaLowPeTickers");
         populateSpreadSheet(highRoaLowPeTickers, highRoaLowPeValuesArray(), excludedTickers(), "highRoaLowPeTickers");
         printNumberOfHoldings(highRoaLowPeTickers);
-        AreHighRoaLowCompaniesStillInScreen.getResult();
+//        AreHighRoaLowCompaniesStillInScreen.getResult();
 
     }
 
